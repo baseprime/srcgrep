@@ -17,7 +17,7 @@ use Getopt::Long;
 
 # Default search parameters (can be overridden in command line)
 my @source_paths  = (
-    '/var/www/sites'
+    '~'
 );
 
 my @exclude_files = (
