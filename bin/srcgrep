@@ -1,13 +1,13 @@
 #!/usr/bin/perl
 #
 # srcgrep
-# https://github.com/gregsabia/srcgrep
+# https://github.com/EngineeringMode/srcgrep
 #
-# @author Greg Sabia
+# @author Greg Sabia Tucker
 # @author Stephen Chow
-# @link http://gregsabia.com
+# @link http://artificer.io
 # @version 0.1.0
-# 
+#
 # Released under MIT License. See LICENSE.txt or http://opensource.org/licenses/MIT
 #
 
@@ -74,7 +74,7 @@ die "No search patterns specified. See $self --help.\n" unless @regexp;
 foreach my $pattern (@regexp) {
     chomp;
     push (@patterns, "-e '$pattern'");
-} 
+}
 
 foreach my $exclude (@exclude_files) {
     chomp;
