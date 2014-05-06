@@ -24,13 +24,11 @@ my @exclude_files = (
     '*.avi',
     '*.m4v',
     '*.jpe?g',
+    '*.png',
+    '*.gif',
     '*.swf',
     '*.flv',
-    '*.avi',
     '*.mov',
-    '*.svn-base',
-    '*.svn',
-    '*.csv',
     '*.tar',
     '*.gz',
     '*.zip',
@@ -45,15 +43,15 @@ $ENV{PATH} = "/bin:/usr/bin:$ENV{PATH}" unless ($ENV{PATH} =~ /\/usr\/bin/);
 my $grep = 'grep';
 my @grep_opts = ('-H', '-n', '-r', '-I', '--mmap');
 my $find = 'find';
-
 my $tee = 'tee';
 my $out_file = "/tmp/$self-$date.txt";
 
 # Get options from command line
-my ($path, $ignore, @regexp, $test, $outfile, @patterns, @excludes);
+my ($path, $ignore, @regexp, $test, $outfile, @patterns, @excludes, @alt_excluded_files);
 Getopt::Long::Configure ("bundling");
 GetOptions (
     "i|ignore" => \$ignore,
+    "E|exclude:s" => \@alt_excluded_files,
     "p|path:s" => \$path,
     "e|regexp=s" => \@regexp,
     "t|test" => \$test,
@@ -61,11 +59,15 @@ GetOptions (
     "h|help" => sub {&usage }
 );
 
+foreach my $filepattern (@alt_excluded_files) {
+    push (@excludes, "--exclude '$filepattern'");
+}
+
 # Check options
 push (@grep_opts, '-i') if $ignore;
 
 if ("$path") {
-    die "'$path' is not a valid path. See $self --help.\n" unless (-d $path);
+    die "'$path' is not a valid path. See $self --help.\n" unless (-e $path);
     @source_paths = ("$path");
 }
 
@@ -83,7 +85,7 @@ foreach my $exclude (@exclude_files) {
 
 foreach my $dir (@source_paths) {
     chomp;
-    next unless -d $dir;
+    next unless (-e $dir);
 
     my $cmd = "$grep @grep_opts @excludes @patterns $dir";
     $cmd = "$cmd | tee $out_file" if ($outfile);
@@ -110,12 +112,14 @@ sub usage () {
 
     -i, --ignore   Ignore case when searching.
 
+    -E, --exclude   Exclude filename pattern.
+
     -o, --outfile  Produce an outfile of results in /tmp.  The file
         will be named $self-YYYYmmddHHMMSS.
 
     -t, --test     Do not run the search, but print the command instead.
 
-    -p, --path     Path to search.  If left empty, the script will try to
+    -p, --path     Path or path to filename to search.  If left empty, the script will try to
         find the source directory.
 
     -e, --regexp   Search pattern using regular expressions. Additional
@@ -129,7 +133,7 @@ sub usage () {
 
     To find files in /tmp with lines starting with Test or test:
     $self -i -p /tmp -e '^test'
-    ";
+    \n";
 
     exit 0;
 }

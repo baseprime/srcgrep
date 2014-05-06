@@ -3,14 +3,14 @@ srcgrep
 
 Grep through entire source tree based on an expression or string. Will output line file and line number of matched expression.
 
-```bash
-$ srcgrep -e 'var express =' -p /var/www/apps
-```
+## Example
 
-This will search the source code of all files in the path provided, including file and line number.
+Searching the source code of all files in the path provided, including file and line number.
 
 ```bash
-./myapp/app.js:9: var express = require('express'),
+$ srcgrep -e 'MyCollection' -p /var/www/apps/myapp
+# mymodel.js:1009:    var MyCollection = Backbone.Collection.extend({
+# myfile.js:326:      var instance = new MyCollection();
 ```
 
 ## Usage:
@@ -25,6 +25,8 @@ Options:
 -h, --help     This usage statement.
 
 -i, --ignore   Ignore case when searching.
+
+-E, --exclude   Exclude filename pattern.
 
 -o, --outfile  Produce an outfile of results in /tmp.  The file
     will be named srcgrep-YYYYmmddHHMMSS.
