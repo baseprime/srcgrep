@@ -9,8 +9,12 @@ Searching the source code of all files in the path provided, including file and 
 
 ```bash
 $ srcgrep -e 'MyCollection' -p /var/www/apps/myapp
-# mymodel.js:1009:    var MyCollection = Backbone.Collection.extend({
-# myfile.js:326:      var instance = new MyCollection();
+```
+This will output the results in the following format: `<filename>:<line number>      <matched string>`
+
+```bash
+mymodel.js:1009:    var MyCollection = Backbone.Collection.extend({
+myfile.js:326:      var instance = new MyCollection();
 ```
 
 ## Usage:
