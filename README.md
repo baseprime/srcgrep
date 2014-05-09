@@ -7,16 +7,9 @@ Grep through entire source tree based on an expression or string. Will output li
 
 Searching the source code of all files in the path provided, including file and line number.
 
-```bash
-$ srcgrep -e 'MyCollection' -p /var/www/apps/myapp
-```
-This will output the results in the following format: `<filename>:<line number>      <matched string>`
-
-```bash
-mymodel.js:1009:    var MyCollection = Backbone.Collection.extend({
-myfile.js:326:      var instance = new MyCollection();
-```
-
+    $ srcgrep -e 'MyCollection' -p /var/www/apps/myapp
+    myfile.js:326:      var instance = new MyCollection();
+    
 ## Usage:
 
 ```bash
