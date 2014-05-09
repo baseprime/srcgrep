@@ -8,9 +8,9 @@ Grep through entire source tree based on an expression or string. Will output li
 Searching the source code of all files in the path provided, including file and line number.
 
     $ srcgrep -e '\$path.*' -i -p /var/www/apps/myapp
-      /var/www/apps/myapp:50:    my ($path, $ignore, @regexp, $test, $outfile, @patterns, @excludes);
-      /var/www/apps/myapp:55:    "p|path:s" => \$path,
-      /var/www/apps/myapp:69:    if ("$path") {
+      /var/www/apps/myapp/myfile.pl:50:    my ($path, $ignore, @regexp, $test, $outfile, @patterns, @excludes);
+      /var/www/apps/myapp/myfile.pl:55:    "p|path:s" => \$path,
+      /var/www/apps/myapp/myfile.pl:69:    if ("$path") {
 
     
 ## Usage:
