@@ -1,0 +1,26 @@
+{
+  "name": "srcgrep",
+  "version": "0.1.0",
+  "description": "Grep through entire source tree based on an expression or string",
+  "main": "bin/srcgrep",
+  "scripts": {
+    "start": "perl bin/srcgrep"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EngineeringMode/srcgrep.git"
+  },
+  "keywords": [
+    "srcgrep",
+    "grep",
+    "search",
+    "node",
+    "tools"
+  ],
+  "author": "Greg Sabia Tucker <greg@artificer.io> (http://artificer.io/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/EngineeringMode/srcgrep/issues"
+  },
+  "homepage": "https://github.com/EngineeringMode/srcgrep"
+}

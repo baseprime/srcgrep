@@ -12,6 +12,12 @@ Searching the source code of all files in the path provided, including file and 
       /var/www/apps/myapp/myfile.pl:55:    "p|path:s" => \$path,
       /var/www/apps/myapp/myfile.pl:69:    if ("$path") {
 
+## Install
+
+```bash
+npm install -g srcgrep
+```
+
     
 ## Usage:
 
